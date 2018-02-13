@@ -4,5 +4,11 @@ class Choice < ApplicationRecord
   has_many :answers
 
   validates :name, uniqueness: true, presence: true
-  validates :content, :img_url, presence: true
+  validate :content_or_img
+
+  def content_or_img
+    if !self.content && !self.img_url
+      self.errors[:display] << "Must have content and/or image"
+    end
+  end
 end

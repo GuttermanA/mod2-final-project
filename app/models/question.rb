@@ -7,24 +7,6 @@ class Question < ApplicationRecord
 
   validate :valid_choices, :unique_choice_combo
 
-  # def category_name=(name)
-  #   self.category = Category.find_by(name: name)
-  # end
-  #
-  # def category_name
-  #   self.category.name
-  # end
-
-  # def self.generate_new(category:)
-  #   q = self.new
-  #   q.category = category
-  #   q.choices = category.choices.sample(2)
-  #   q.description = "#{q.choices[0].name} or #{q.choices[1].name}"
-  #   q.choice_a_count = 0
-  #   q.choice_b_count = 0
-  #   q
-  # end
-
   def self.generate_all_questions
     Category.all.each do |category|
       id_arr = category.choices.map {|choice| choice.id}
@@ -40,6 +22,7 @@ class Question < ApplicationRecord
         q.choices << choice_a
         q.choices << choice_b
         q.save
+        puts "Generated #{id_combo_arr.size} questions for #{category}"
       end
     end
   end
