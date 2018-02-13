@@ -1,0 +1,9 @@
+<h1>Edit Info</h1>
+<h3>Username: <%= current_user.username %></h3>
+<%= form_for current_user do |f| %>
+  <%= f.password_field :password, placeholder: "Password" %>
+  <%= f.password_field :password_confirmation, placeholder: "Confirm Password" %>
+  <%= f.text_field :email, placeholder: "Email Address" %>
+  <%= f.number_field :zip_code, placeholder: "Zipcode" %>
+  <%= f.submit %>
+<% end %>

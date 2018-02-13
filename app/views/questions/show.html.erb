@@ -1,0 +1,17 @@
+<h1>Would you rather...</h1>
+
+
+<% @question.choices.each do |choice| %>
+  <%= form_tag '/questions/:question_id/answers' do %>
+    <%= hidden_field_tag :'answer[choice_id]', choice.id%>
+    <%= hidden_field_tag :'answer[user_id]', current_user.id%>
+    <%= hidden_field_tag :'answer[question_id]', @question.id%>
+    <% if choice.img_url %>
+      <%= image_submit_tag choice.img_url %>
+    <% else %>
+      <%= submit_tag choice.content %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= link_to 'Home', root_path %>
