@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
 
 
-
+  get '/out_of_questions', to: 'static#out_of_questions'
   get '/signup', to: 'users#new'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

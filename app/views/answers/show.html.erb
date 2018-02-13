@@ -1,22 +1,28 @@
 <h1>Would you rather...</h1>
 
 
-<% @question.choices.each_with_index do |choice, index| %>
+<% @question.choices.each do |choice| %>
+
   <% if choice.img_url %>
     <%= image_tag choice.img_url %>
-    <% if index == 0 %>
-      <%= @question.choice_a_count %>
+    <% if choice == @answer.choice %>
+      <%= @stats[:choice] %>
     <% else %>
-      <%= @question.choice_b_count %>
+      <%= @stats[:not_choice] %>
     <% end %>
   <% else %>
-    <%= submit_tag choice.content %>
-    <% if index == 0 %>
-      <%= @question.choice_a_count %>
+    <%= text_field_tag choice.content %>
+    <% if choice == @answer.choice %>
+      <%= @stats[:choice] %>
     <% else %>
-      <%= @question.choice_b_count %>
+      <%= @stats[:not_choice] %>
     <% end %>
   <% end %>
 <% end %>
 
-<%= button_to "Give Me More!", question_path(remaining_questions.sample.id), method: "get" %>
+
+<% if remaining_questions.empty? %>
+  <%= button_to 'Give Me More!', out_of_questions_path, method: "get" %>
+<% else %>
+  <%= button_to 'Give Me More!', question_path(remaining_questions.sample.id), method: "get" %>
+<% end %>

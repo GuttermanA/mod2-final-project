@@ -11,8 +11,8 @@ class AnswersController < ApplicationController
 
   def create
     @answer = Answer.create(answer_params)
-    @answer.update_question_stats
     @question = @answer.question
+    @stats = @answer.calculate_percent(@answer.calculate_count)
     render :show
   end
 
