@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
 
   def show
+    @answers = current_user.answers
+    @comments = current_user.comments
   end
 
   def new

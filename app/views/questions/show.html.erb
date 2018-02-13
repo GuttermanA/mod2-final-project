@@ -2,7 +2,7 @@
 
 
 <% @question.choices.each do |choice| %>
-  <%= form_tag '/questions/:question_id/answers' do %>
+  <%= form_tag "/questions/#{@question.id}/answers" do %>
     <%= hidden_field_tag :'answer[choice_id]', choice.id%>
     <%= hidden_field_tag :'answer[user_id]', current_user.id%>
     <%= hidden_field_tag :'answer[question_id]', @question.id%>
@@ -12,6 +12,19 @@
       <%= submit_tag choice.content %>
     <% end %>
   <% end %>
+<% end %>
+
+
+
+<h2>Comments</h2>
+<% if @comments.empty? %>
+  <p>No comments yet!</p>
+<% else %>
+  <ul>
+  <% @comments.each do |comment| %>
+    <li><%= comment.user.username %> - <%= comment.content %></li>
+  <% end %>
+  </ul>
 <% end %>
 
 <%= link_to 'Home', root_path %>

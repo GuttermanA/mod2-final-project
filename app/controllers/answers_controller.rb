@@ -1,9 +1,15 @@
 class AnswersController < ApplicationController
+  before_action :is_authenticated?, only: [:show]
+  before_action :nsfw_filter, only: [:show]
+
   def index
   end
 
   def show
-    answer = Answer.find_by(id: params[:id])
+    @answer = Answer.find_by(id: params[:id])
+    @question = @answer.question
+    @stats = @answer.calculate_percent(@answer.calculate_count)
+    @comments = @question.comments
   end
 
   def new
@@ -12,8 +18,7 @@ class AnswersController < ApplicationController
   def create
     @answer = Answer.create(answer_params)
     @question = @answer.question
-    @stats = @answer.calculate_percent(@answer.calculate_count)
-    render :show
+    redirect_to question_answer_path(@question, @answer)
   end
 
   private

@@ -26,3 +26,21 @@
 <% else %>
   <%= button_to 'Give Me More!', question_path(remaining_questions.sample.id), method: "get" %>
 <% end %>
+
+
+<h2>Comments</h2>
+  <%= form_tag comments_path do %>
+    <%= hidden_field_tag :'comment[user_id]', current_user.id %>
+    <%= hidden_field_tag :'comment[question_id]', @question.id %>
+    <%= text_area_tag :'comment[content]', nil, placeholder: "Enter comment here..." %>
+    <%= submit_tag "Submit Comment" %>
+  <% end %>
+<% if @comments.empty? %>
+  <p>No comments yet!</p>
+<% else %>
+  <ul>
+  <% @comments.each do |comment| %>
+    <li><%= comment.user.username %> - <%= comment.content %></li>
+  <% end %>
+  </ul>
+<% end %>

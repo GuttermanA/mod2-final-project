@@ -5,19 +5,6 @@ class Answer < ApplicationRecord
 
   validates :user_id, uniqueness: { scope: :question_id, message: "can only answer a question once" }
 
-  # def update_question_stats
-  #   binding.pry
-  #   q = self.question
-  #
-  #   if self.choice == q.choices.first
-  #     q.choice_a_count += 1
-  #   else
-  #     q.choice_b_count += 1
-  #   end
-  #   binding.pry
-  #   q.save
-  # end
-
   def calculate_count
     stats = {}
     stats[:all] = self.class.where("question_id = ?", self.question.id).size
@@ -28,7 +15,7 @@ class Answer < ApplicationRecord
   end
 
   def calculate_percent(stats)
-    choice = (stats[:choice][:count]/stats[:all]) * 100
+    choice = (stats[:choice][:count].to_f/stats[:all].to_f).round(2) * 100
     not_choice = (100 - choice)
     percent = {}
     percent[:choice] = choice.to_s + '%'

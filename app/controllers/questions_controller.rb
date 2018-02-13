@@ -1,12 +1,13 @@
 class QuestionsController < ApplicationController
-  # before_action :set_question, only: [:show]
+  before_action :is_authenticated?, only: [:show]
+  before_action :nsfw_filter, only: [:show]
 
   def index
-
   end
 
   def show
     @question = Question.find_by(id: params[:id])
+    @comments = @question.comments
   end
 
   private
@@ -15,7 +16,4 @@ class QuestionsController < ApplicationController
     params.require(:question).permit(:description, :category_name)
   end
 
-  # def set_question
-  #   @question = Question.find_by(id: params[:id])
-  # end
 end
