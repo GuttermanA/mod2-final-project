@@ -22,7 +22,7 @@ class Question < ApplicationRecord
         q.choices << choice_a
         q.choices << choice_b
         q.save
-        puts "Generated #{id_combo_arr.size} questions for #{category}"
+        puts "Generated #{id_combo_arr.size} questions from #{category.choices.size} choices for #{category.name}"
       end
     end
   end
