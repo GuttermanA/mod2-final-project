@@ -13,7 +13,7 @@
       <%= @stats[:not_choice] %>
     <% end %>
   <% else %>
-    <%= text_field_tag choice.content %>
+    <%= choice.content %>
     <% if choice == @answer.choice %>
       <%= @stats[:choice] %>
     <% else %>
