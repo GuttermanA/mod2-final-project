@@ -6,7 +6,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @question = Question.find_by(id: params[:id])
+    @question = select_unanswered_question_by_category(params[:id])
     @comments = @question.comments
   end
 

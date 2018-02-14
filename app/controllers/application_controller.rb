@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :current_user, :remaining_questions, :select_unanswered_question, :select_unanswered_question_by_category, :clean_categories, :nsfw_categories
+  helper_method :current_user, :remaining_questions, :select_unanswered_question, :select_unanswered_question_by_category, :clean_categories, :nsfw_categories, :rand_category_id
 
   def current_user
     @current_user ||= User.find_by(id: session[:user_id])
@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   def is_authenticated?
     if !current_user
-      flash[:message] = 'You must be logged in to see this.'
+      flash[:message] = "You must be logged in to see this."
       redirect_to signin_path
     end
   end
@@ -24,9 +24,9 @@ class ApplicationController < ActionController::Base
   end
 
   # call on a category
-  def select_unanswered_question_by_category(category)
+  def select_unanswered_question_by_category(category_id)
     questions = remaining_questions.select do |q|
-      q.category == category
+      q.category.id == category_id.to_i
     end
     questions.sample
   end
@@ -37,6 +37,10 @@ class ApplicationController < ActionController::Base
 
   def nsfw_categories
     Category.all.select {|c| c.name.include?("nsfw")}
+  end
+
+  def rand_category_id
+    rand(1..Category.all.size)
   end
 
   # call on an answer or question

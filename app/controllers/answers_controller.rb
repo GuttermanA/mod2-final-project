@@ -2,6 +2,7 @@ class AnswersController < ApplicationController
   before_action :is_authenticated?, only: [:show]
   before_action :nsfw_filter, only: [:show]
 
+  #NOTE TO ALEX: DONT TOUCH THE METHODS
   def index
   end
 
