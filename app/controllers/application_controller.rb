@@ -8,8 +8,8 @@ class ApplicationController < ActionController::Base
 
   def is_authenticated?
     if !current_user
-      flash[:message] = "You must be logged in to see this."
-      redirect_to signin_path
+      flash[:login_message] = "You must be logged in to see this."
+      redirect_to login_path
     end
   end
 
@@ -45,13 +45,19 @@ class ApplicationController < ActionController::Base
 
   # call on an answer or question
   def nsfw_filter
-    if self.class == Answer
-      filter = self.question.nsfw_flag
-    elsif self.class == Question
-      filter = self.nsfw_flag
+    if self.class == AnswersController
+      answer = Answer.find_by(id: params[:id])
+      if answer.question.nsfw_flag
+        filter = true
+      end
+    elsif self.class == QuestionsController
+      question = Question.find_by(id: params[:id])
+      if question.nsfw_flag
+        filter = true
+      end
     end
     if filter && (current_user.dob && current_user.dob >= 18.years.ago)
-      flash[:message] = "You must be 18 or older to view this."
+      flash[:age_message] = "You must be 18 or older to view this."
       redirect_to root_path
     end
   end

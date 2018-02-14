@@ -1,1 +1,4 @@
-<h1>Welcome</h1>
+<% if flash[:age_message] %>
+  <%= flash[:age_message] %>
+<% end %>
+<h1>Welcome, <%= current_user.username %>.</h1>
