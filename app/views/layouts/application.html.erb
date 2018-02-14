@@ -19,12 +19,11 @@
           <% if remaining_questions.empty? %>
             <li><a href="<%= out_of_questions_path %>">Questions</a></li>
           <% else %>
-<<<<<<< HEAD
+
             <%= link_to 'Questions', question_path(select_unanswered_question), {class: "navbar-brand"} %>
           <% end %>
           <%= link_to 'Categories', categories_path, {class: "navbar-brand"} %>
           <%= link_to 'Log Out', logout_path, {class: "navbar-brand", method: 'DELETE'} %>
-=======
             <li><a href="<%= question_path(remaining_questions.sample.id) %>">Questions</a></li>
             <li><a href="<%= categories_path %>">Categories</a></li>
             <!-- <%= link_to 'Questions', question_path(remaining_questions.sample.id), {class: "navbar-brand"} %> -->
@@ -35,7 +34,6 @@
         <% if current_user %>
           <li><a href="<%= logout_path %>">Logout</a></li>
           <!-- <%= link_to 'Log Out', logout_path, {class: "navbar-brand", method: 'DELETE'} %> -->
->>>>>>> css
         <% else %>
           <li><a href="<%= signup_path %>">Sign Up</a></li>
           <li><a href="<%= login_path %>">Log In</a></li>
