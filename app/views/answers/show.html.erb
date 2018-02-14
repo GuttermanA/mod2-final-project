@@ -26,7 +26,7 @@
 <% if remaining_questions.empty? %>
   <%= button_to 'Give Me More!', out_of_questions_path, method: "get" %>
 <% else %>
-  <%= button_to 'Give Me More!', question_path(remaining_questions.sample.id), method: "get" %>
+  <%= button_to 'Give Me More!', question_path(select_unanswered_question), method: "get" %>
 <% end %>
 
 
