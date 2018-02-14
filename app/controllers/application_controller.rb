@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :current_user, :remaining_questions, :select_unanswered_question, :select_unanswered_question_by_category
+  helper_method :current_user, :remaining_questions, :select_unanswered_question, :select_unanswered_question_by_category, :clean_categories, :nsfw_categories
 
   def current_user
     @current_user ||= User.find_by(id: session[:user_id])
@@ -29,6 +29,14 @@ class ApplicationController < ActionController::Base
       q.category == category
     end
     questions.sample
+  end
+
+  def clean_categories
+    Category.all.select {|c| !c.name.include?("nsfw")}
+  end
+
+  def nsfw_categories
+    Category.all.select {|c| c.name.include?("nsfw")}
   end
 
   # call on an answer or question

@@ -1,17 +1,17 @@
-<h1><%= current_user.username %></h1>
+<h1>Hello, <%= current_user.username %></h1>
 <p><%= current_user.email %></p>
 <p><%= current_user.dob %></p>
 <p><%= current_user.zip_code %></p>
 
 
-<h3>You've answered <%= pluralize(@answers.size,'questions') %>.</h3>
+<h4>You've answered <%= pluralize(@answers.size,'questions') %>.</h4>
 <ul>
   <% @answers.each do |answer| %>
     <li>Between <%= answer.question.description %>, you picked <%= answer.choice.name %>.</li>
   <% end %>
 </ul>
 
-<h3>You've made <%= pluralize(@comments.size,'comment') %>.</h3>
+<h4>You've made <%= pluralize(@comments.size,'comment') %>.</h4>
 
 <% if @comments.empty? %>
   <p>No comments yet!</p>
@@ -23,4 +23,4 @@
   </ul>
 <% end %>
 
-<%= link_to 'Edit User Info', edit_user_path %>
+<%= link_to "Edit Profile", edit_user_path %>
