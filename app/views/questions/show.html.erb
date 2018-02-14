@@ -1,3 +1,5 @@
+<h5>Category: <%= @question.category.name %></h5>
+
 <h1>Would you rather...</h1>
 
 
@@ -7,6 +9,7 @@
     <%= hidden_field_tag :'answer[user_id]', current_user.id%>
     <%= hidden_field_tag :'answer[question_id]', @question.id%>
     <% if choice.img_url %>
+      <%= choice.name %>
       <%= image_submit_tag choice.img_url %>
     <% else %>
       <%= submit_tag choice.content %>
@@ -26,5 +29,3 @@
   <% end %>
   </ul>
 <% end %>
-
-<%= link_to 'Home', root_path %>

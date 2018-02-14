@@ -1,15 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :current_user, :remaining_questions
+  helper_method :current_user, :remaining_questions, :select_unanswered_question, :select_unanswered_question_by_category
 
   def current_user
     @current_user ||= User.find_by(id: session[:user_id])
-  end
-
-  def remaining_questions
-    all_questions = Question.all
-    user_questions = current_user.answers.map{|a| a.question}
-    remaining_questions = all_questions - user_questions
   end
 
   def is_authenticated?
@@ -19,6 +13,25 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def remaining_questions
+    all_questions = Question.all
+    user_questions = current_user.answers.map{|a| a.question}
+    remaining_questions = all_questions - user_questions
+  end
+
+  def select_unanswered_question
+    remaining_questions.sample
+  end
+
+  # call on a category
+  def select_unanswered_question_by_category(category)
+    questions = remaining_questions.select do |q|
+      q.category == category
+    end
+    questions.sample
+  end
+
+  # call on an answer or question
   def nsfw_filter
     if self.class == Answer
       filter = self.question.nsfw_flag
