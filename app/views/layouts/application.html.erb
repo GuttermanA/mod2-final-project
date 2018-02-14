@@ -7,22 +7,44 @@
   <body>
     <!-- navbar -->
     <nav class="navbar navbar-default">
-      <div class="navbar-header">
+      <div class="navbar_header">
         <a href="<%= root_url %>" class="navbar-brand">Home</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+
         <% if current_user %>
-          <a class="navbar-brand" href="<%= user_path(current_user) %>">Hello, <%= current_user.username.titleize %>!</a>
+          <li><a href="<%= user_path(current_user) %>">Hello, <%= current_user.username.titleize %></a></li>
           <% if remaining_questions.empty? %>
-            <%= link_to 'Questions', out_of_questions_path , {class: "navbar-brand"} %>
+            <li><a href="<%= out_of_questions_path %>">Questions</a></li>
           <% else %>
+<<<<<<< HEAD
             <%= link_to 'Questions', question_path(select_unanswered_question), {class: "navbar-brand"} %>
           <% end %>
           <%= link_to 'Categories', categories_path, {class: "navbar-brand"} %>
           <%= link_to 'Log Out', logout_path, {class: "navbar-brand", method: 'DELETE'} %>
-        <% else %>
-          <a class="navbar-brand" href="<%= signup_path %>">Sign Up</a>
-          <a class="navbar-brand" href="<%= login_path %>">Log In</a>
+=======
+            <li><a href="<%= question_path(remaining_questions.sample.id) %>">Questions</a></li>
+            <li><a href="<%= categories_path %>">Categories</a></li>
+            <!-- <%= link_to 'Questions', question_path(remaining_questions.sample.id), {class: "navbar-brand"} %> -->
+          <% end %>
         <% end %>
-      </div>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if current_user %>
+          <li><a href="<%= logout_path %>">Logout</a></li>
+          <!-- <%= link_to 'Log Out', logout_path, {class: "navbar-brand", method: 'DELETE'} %> -->
+>>>>>>> css
+        <% else %>
+          <li><a href="<%= signup_path %>">Sign Up</a></li>
+          <li><a href="<%= login_path %>">Log In</a></li>
+          <!-- <a class="navbar-brand" href="<%= signup_path %>">Sign Up</a>
+          <a class="navbar-brand" href="<%= login_path %>">Log In</a> -->
+        <% end %>
+      </ul>
+
+
     </nav>
 
 
