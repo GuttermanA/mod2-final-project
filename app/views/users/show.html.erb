@@ -1,26 +1,38 @@
-<h1>Hello, <%= current_user.username %></h1>
-<p><%= current_user.email %></p>
-<p><%= current_user.dob %></p>
-<p><%= current_user.zip_code %></p>
+<h1>Hello, <%= current_user.username %></h1><br>
+<div class="col-lg-12 col-md-12 col-sm-12 user_info_box">
+  <h3 class="user_info">Email: <%= current_user.email %></h3>
+  <h3 class="user_info">Birthday: <%= current_user.dob.strftime('%D') %></h3><br>
+  <%= button_to "Edit Profile", edit_user_path, method: :get, class: "btn btn-danger btn-sm"%><br>
+</div>
 
+<div class="col-lg-6 col-md-6 col-sm-6">
+  <h4>You've answered <%= pluralize(@answers.size,'questions') %>.</h4>
+  <div id="user_answers_box" class="panel panel-default">
+    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#user_answers">Show Answers</button>
+    <div id="user_answers" class="collapse panel-body">
+      <ul>
+        <% @answers.each do |answer| %>
+          <li>Between <strong><%= answer.question.description %></strong>, you picked <strong class="picked"><%= answer.choice.name %></strong>.</li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
 
-<h4>You've answered <%= pluralize(@answers.size,'questions') %>.</h4>
-<ul>
-  <% @answers.each do |answer| %>
-    <li>Between <%= answer.question.description %>, you picked <%= answer.choice.name %>.</li>
-  <% end %>
-</ul>
-
-<h4>You've made <%= pluralize(@comments.size,'comment') %>.</h4>
-
-<% if @comments.empty? %>
-  <p>No comments yet!</p>
-<% else %>
-  <ul>
-  <% @comments.each do |comment| %>
-    <li><%= comment.user.username %> - <%= comment.content %></li>
-  <% end %>
-  </ul>
-<% end %>
-
-<%= link_to "Edit Profile", edit_user_path %>
+<div class="col-lg-6 col-md-6 col-sm-6">
+  <h4>You've made <%= pluralize(@comments.size,'comment') %>.</h4>
+  <div id="user_comments_box" class="panel panel-default">
+    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#user_comments">Show Comments</button>
+    <div id="user_comments" class="collapse panel-body">
+      <% if @comments.empty? %>
+        <p>No comments yet!</p>
+      <% else %>
+        <ul>
+        <% @comments.each do |comment| %>
+          <li> <strong><%= link_to comment.question.description, find_user_answer(comment.question) %>:</strong class="picked"> <br> <%= comment.content %></li>
+        <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</div>

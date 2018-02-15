@@ -21,7 +21,7 @@ class AnswersController < ApplicationController
       redirect_to @answer
     else
       flash[:reanswer_message] = "You've already answered this question! Try a new one:"
-      redirect_to question_path(rand_category_id)
+      redirect_to question_path(rand_slug)
     end
   end
 

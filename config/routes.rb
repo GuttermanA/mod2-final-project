@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :users, except: [:delete, :new]
 
 
-  get '/categories/:id/question', to: 'questions#show'
+  get '/categories/:id/question', to: 'questions#show', as: :question
 
   get '/out_of_questions', to: 'static#out_of_questions'
   get '/about', to: 'static#about'

@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :current_user, :remaining_questions, :select_unanswered_question, :select_unanswered_question_by_category, :clean_categories, :nsfw_categories, :rand_category_id, :rand_slug
+  helper_method :current_user, :remaining_questions, :select_unanswered_question, :select_unanswered_question_by_category, :clean_categories, :nsfw_categories, :rand_category_id, :rand_slug, :find_user_answer
 
   def current_user
     @current_user ||= User.find_by(id: session[:user_id])
@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
       flash[:login_message] = "You must be logged in to see this."
       redirect_to login_path
     end
+  end
+
+  def find_user_answer(question)
+    Answer.find_by(user_id: current_user.id, question_id: question.id)
   end
 
   def remaining_questions
