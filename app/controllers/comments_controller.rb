@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
       question = @comment.question
       redirect_to question_answer_path(question, answer)
     else
-      flash[:message] = "Cannot submit empty comment"
+      flash[:message] = "Cannot submit empty comment."
       render 'answers/show'
     end
   end
