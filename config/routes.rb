@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
-  resources :users, except: [:delete, :new]
-  resources :questions, only: [:index, :show] do
-    resources :answers, only: [:new, :create, :index, :show]
+  resources :categories, only: [:index] do
+    resources :questions, only: [:index], shallow: true do
+      resources :answers, only: [:new, :create, :index, :show]
+    end
   end
   resources :comments, only: [:index, :create]
-  resources :categories, only: [:index]
+  resources :users, except: [:delete, :new]
+
+
+  get '/categories/:id/question', to: 'questions#show'
 
   get '/out_of_questions', to: 'static#out_of_questions'
   get '/signup', to: 'users#new'

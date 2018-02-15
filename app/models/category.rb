@@ -1,7 +1,8 @@
 class Category < ApplicationRecord
   has_many :choices
   has_many :questions
-
+  after_create :update_slug
+  before_update :assign_slug
   validates :name, uniqueness: true, presence: true
 
   def generate_all_questions_for_category
@@ -20,6 +21,31 @@ class Category < ApplicationRecord
       q.save
     end
     puts "Generated #{id_combo_arr.size} questions from #{self.choices.size} choices for #{self.name}"
+  end
 
+  def create_slug
+    name.downcase.gsub(" ", "-")
+  end
+  
+  def update_slug
+    update_attributes slug: assign_slug
+  end
+
+  def rand_slug
+    Category.find(rand_category_id).name.slug
+  end
+
+  def to_param
+    slug
+  end
+
+  def self.find_by_slug(slug)
+    Category.all.find {|c| c.slug == slug}
+  end
+
+  private
+
+  def assign_slug
+    self.slug = create_slug
   end
 end
