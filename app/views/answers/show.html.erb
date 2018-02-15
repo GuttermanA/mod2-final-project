@@ -29,8 +29,10 @@
   <%= button_to "Give Me More!", {controller: "questions", action: "show", id: rand_category_id }, method: "get" %>
 <% end %>
 
-
 <h2>Comments</h2>
+<% if flash[:comment_message] %>
+  <%= flash[:comment_message] %>
+<% end %>
   <%= form_tag comments_path do %>
     <%= hidden_field_tag :'comment[user_id]', current_user.id %>
     <%= hidden_field_tag :'comment[question_id]', @question.id %>

@@ -14,7 +14,12 @@ class ApplicationController < ActionController::Base
   end
 
   def remaining_questions
-    all_questions = Question.all
+    if current_user.dob && current_user.dob >= 18.years.ago
+      all_questions = clean_categories.map {|c| c.questions}
+      all_questions.flatten!
+    else
+      all_questions = Question.all
+    end
     user_questions = current_user.answers.map{|a| a.question}
     remaining_questions = all_questions - user_questions
   end
@@ -40,7 +45,12 @@ class ApplicationController < ActionController::Base
   end
 
   def rand_category_id
-    rand(1..Category.all.size)
+    if current_user.dob && current_user.dob >= 18.years.ago
+      clean_categories_ids = clean_categories.map { |c| c.id  }
+      clean_categories_ids.sample
+    else
+      rand(1..Category.all.size)
+    end
   end
 
   # call on an answer or question

@@ -1,4 +1,7 @@
-
+<% if flash[:reanswer_message] %>
+  <%= flash[:reanswer_message] %>
+<% end %>
+<br>
 <div class="container">
   <p>Category: <%= @question.category.name %></p>
 
