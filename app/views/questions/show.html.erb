@@ -43,6 +43,7 @@
     <ul>
     <% @comments.each do |comment| %>
       <li><%= comment.user.username %> - <%= comment.content %></li>
+      <li role="separator" class="divider"></li>
     <% end %>
     </ul>
   <% end %>
