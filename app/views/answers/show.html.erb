@@ -1,50 +1,76 @@
-<h5>Category: <%= @question.category.name %></h5>
+<h3>Category: <%= @question.category.name %></h3>
 
-<h1>Would you rather...</h1>
+<div class="jumbotron">
+  <h1>Would you rather...</h1>
+</div>
 
+<div class="row">
+  <div class="col-lg-1 col-md-1 col-sm-1"></div>
+  <% @question.choices.each do |choice| %>
+    <div class="col-lg-5 col-md-5 col-sm-5 text-center" >
+    <% if choice.img_url %>
+      <%= image_tag choice.img_url, class: "answer-img-thumbnail" %>
+      <h4><%= choice.name%></h4>
 
-<% @question.choices.each do |choice| %>
+      <% if choice == @answer.choice %>
+        <h4><%= @stats[:choice] %></h4>
+      <% else %>
+        <h4><%= @stats[:not_choice]%></h4>
+      <% end %>
 
-  <% if choice.img_url %>
-    <%= image_tag choice.img_url %>
-    <% if choice == @answer.choice %>
-      <%= @stats[:choice] %>
     <% else %>
-      <%= @stats[:not_choice] %>
+      <div class="answer-box"><p><%= choice.content %></p></div>
+      <% if choice == @answer.choice %>
+        <h4><%= @stats[:choice] %></h4>
+      <% else %>
+        <h4><%= @stats[:not_choice] %></h4>
+      <% end %>
+
     <% end %>
+    </div>
+  <% end %>
+  <div class="col-lg-1 col-md-1 col-sm-1"></div>
+</div>
+
+<br>
+<div class="row text-center">
+  <% if remaining_questions.empty? %>
+    <%= button_to "Give Me More!", out_of_questions_path, method: "get", class: "btn-lg" %>
   <% else %>
-    <%= choice.content %>
-    <% if choice == @answer.choice %>
-      <%= @stats[:choice] %>
-    <% else %>
-      <%= @stats[:not_choice] %>
-    <% end %>
+    <%= button_to "Give Me More!", {controller: "questions", action: "show", id: rand_slug }, method: "get", class: "btn-lg more-btn" %>
   <% end %>
-<% end %>
+</div>
+
+<hr class="large">
+<div class="row">
+  <h3>Comments</h3>
+  <% if flash[:comment_message] %>
+    <p class="warning"><%= flash[:comment_message] %></p>
+  <% end %>
+
+  <div class="col-lg-12 col-md-12 col-sm-12 comment-box" >
 
 
-<% if remaining_questions.empty? %>
-  <%= button_to "Give Me More!", out_of_questions_path, method: "get" %>
-<% else %>
-  <%= button_to "Give Me More!", {controller: "questions", action: "show", id: rand_slug }, method: "get" %>
-<% end %>
 
-<h2>Comments</h2>
-<% if flash[:comment_message] %>
-  <%= flash[:comment_message] %>
-<% end %>
-  <%= form_tag comments_path do %>
-    <%= hidden_field_tag :'comment[user_id]', current_user.id %>
-    <%= hidden_field_tag :'comment[question_id]', @question.id %>
-    <%= text_area_tag :'comment[content]', nil, placeholder: "Enter comment here..." %>
-    <%= submit_tag "Submit Comment" %>
+    <form>
+      <div class="form-group">
+        <%= form_tag comments_path do %>
+          <%= hidden_field_tag :'comment[user_id]', current_user.id %>
+          <%= hidden_field_tag :'comment[question_id]', @question.id %>
+          <%= text_area_tag :'comment[content]', nil, placeholder: "Enter your comment here...", class:"form-control" %>
+          <%= submit_tag "Submit", class: "btn btn-danger btn-sm" %>
+        <% end %>
+      </div>
+    </form>
+
+  <hr class="small">
+
+  <% if @comments.empty? %>
+    <p>No comments yet!</p>
+  <% else %>
+    <ul><% @comments.each do |comment| %>
+      <li><strong><%= comment.user.username %></strong> - <%= comment.content %></li>
+    <% end %></ul>
   <% end %>
-<% if @comments.empty? %>
-  <p>No comments yet!</p>
-<% else %>
-  <ul>
-  <% @comments.each do |comment| %>
-    <li><%= comment.user.username %> - <%= comment.content %></li>
-  <% end %>
-  </ul>
-<% end %>
+</div>
+</div>

@@ -1,10 +1,9 @@
 <% if flash[:reanswer_message] %>
-  <%= flash[:reanswer_message] %>
+  <p class: "warning"><%= flash[:reanswer_message] %></p>
 <% end %>
 <br>
 
-<h5>Category: <%= @question.category.name %></h5>
-
+<h3>Category: <%= @question.category.name %></h3>
 
 <div class="jumbotron">
   <h1>Would you rather...</h1>
@@ -14,25 +13,24 @@
   <div class="col-lg-1 col-md-1 col-sm-1"></div>
   <% @question.choices.each do |choice| %>
     <div class="col-lg-5 col-md-5 col-sm-5 text-center" >
-      <%= form_tag question_answers_path(@question) do %>
-        <%= hidden_field_tag :'answer[choice_id]', choice.id%>
-        <%= hidden_field_tag :'answer[user_id]', current_user.id%>
-        <%= hidden_field_tag :'answer[question_id]', @question.id%>
-        <% if choice.img_url %>
-            <%= image_submit_tag choice.img_url, class: "img-thumbnail"%>
-            <h4><%= choice.name%></h4>
-        <% else %>
-            <%= submit_tag choice.content, class: "choice-btn"%>
-        <% end %>
+    <%= form_tag question_answers_path(@question) do %>
+      <%= hidden_field_tag :'answer[choice_id]', choice.id%>
+      <%= hidden_field_tag :'answer[user_id]', current_user.id%>
+      <%= hidden_field_tag :'answer[question_id]', @question.id%>
+      <% if choice.img_url %>
+          <%= image_submit_tag choice.img_url, class: "img-thumbnail" %>
+          <h4><%= choice.name%></h4>
+      <% else %>
+          <%= submit_tag choice.content, class: "choice-btn"%>
       <% end %>
+    <% end %>
     </div>
   <% end %>
   <div class="col-lg-1 col-md-1 col-sm-1"></div>
 </div>
 
 
-<hr class="style1">
-
+<hr class="large">
 <div class="row">
   <h3>Comments</h3>
 
@@ -42,8 +40,8 @@
   <% else %>
     <ul>
     <% @comments.each do |comment| %>
-      <li><%= comment.user.username %> - <%= comment.content %></li>
-      <li role="separator" class="divider"></li>
+      <li><strong><%= comment.user.username %></strong> - <%= comment.content %></li>
+      <hr>
     <% end %>
     </ul>
   <% end %>
