@@ -26,13 +26,9 @@ class Category < ApplicationRecord
   def create_slug
     name.downcase.gsub(" ", "-")
   end
-  
+
   def update_slug
     update_attributes slug: assign_slug
-  end
-
-  def rand_slug
-    Category.find(rand_category_id).name.slug
   end
 
   def to_param
