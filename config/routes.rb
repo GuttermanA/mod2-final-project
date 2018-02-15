@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get '/categories/:id/question', to: 'questions#show'
 
   get '/out_of_questions', to: 'static#out_of_questions'
+  get '/about', to: 'static#about'
+  get '/contact', to: 'static#contact'
   get '/signup', to: 'users#new'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
