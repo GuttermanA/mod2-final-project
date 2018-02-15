@@ -52,16 +52,16 @@
 
 
 
-    <form>
+
       <div class="form-group">
-        <%= form_tag comments_path do %>
+        <%= form_tag comments_path method: :post do %>
           <%= hidden_field_tag :'comment[user_id]', current_user.id %>
           <%= hidden_field_tag :'comment[question_id]', @question.id %>
           <%= text_area_tag :'comment[content]', nil, placeholder: "Enter your comment here...", class:"form-control" %>
-          <%= submit_tag "Submit", class: "btn btn-danger btn-sm" %>
+          <%= submit_tag "Submit", method: :post, class: "btn btn-danger btn-sm" %>
         <% end %>
       </div>
-    </form>
+
 
   <hr class="small">
 
