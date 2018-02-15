@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     if @comment.save
       answer = @comment.user.answers.last
       question = @comment.question
-      redirect_to question_answer_path(question, answer)
+      redirect_to answer
     else
       flash[:comment_message] = "Cannot submit empty comment."
       redirect_to controller: 'answers', action: 'show', id: @comment.user.answers.last.id, question_id: @comment.question.id
