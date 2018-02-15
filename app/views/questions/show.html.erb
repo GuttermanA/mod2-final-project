@@ -2,14 +2,15 @@
   <%= flash[:reanswer_message] %>
 <% end %>
 <br>
-<div class="container">
-  <p>Category: <%= @question.category.name %></p>
 
-  <div class="jumbotron">
-    <h1>Would you rather...</h1>
-  </div>
+<h5>Category: <%= @question.category.name %></h5>
 
-  <div class="row">
+
+<div class="jumbotron">
+  <h1>Would you rather...</h1>
+</div>
+
+<div class="row">
   <div class="col-lg-1 col-md-1 col-sm-1"></div>
   <% @question.choices.each do |choice| %>
     <div class="col-lg-5 col-md-5 col-sm-5 text-center" >
@@ -27,11 +28,15 @@
     </div>
   <% end %>
   <div class="col-lg-1 col-md-1 col-sm-1"></div>
-  </div>
+</div>
 
-  <div class="row">
-  <div class="col-md-12 col-sm-12" >
-  <h4>Comments</h4>
+
+<hr class="style1">
+
+<div class="row">
+  <h3>Comments</h3>
+
+  <div class="col-lg-12 col-md-12 col-sm-12 comment-box" >
   <% if @comments.empty? %>
     <p>No comments yet!</p>
   <% else %>
@@ -42,6 +47,4 @@
     </ul>
   <% end %>
   </div>
-  </div>
-
 </div>

@@ -1,48 +1,95 @@
 body {
-  padding-top: 70px;
   background-color: #FFC33C;
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+  font-family: 'Rock Salt', cursive;
 }
 
 
+h3 {
+  font-family: 'Noticia Text', serif;
+  font-weight: bold;
+  margin-left: 15px;
+}
+
+h4 {
+   font-family: 'Rock Salt', cursive;
+ }
+
+h5 {
+  font-family: 'Noticia Text', serif;
+}
+
 .navbar {
-  background-color: #59C4C5
+  padding-top: 10px;
+  padding-bottom: 5px;
+  background-color: #59C4C5;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.5rem;
 }
 
 .navbar a {
   color: white;
 }
 
+#hamburger {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
 .jumbotron {
   background-color: #FFC33C;
   padding: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2.5rem;
 }
 
 .img-thumbnail {
   height: 400px;
   padding: 0.75rem;
-  background-color: #59C4C5;
+  background-color: #FF4C65;
 }
 
+.img-thumbnail:hover {
+  filter: brightness(1.5);
+  filter: contrast(0.75);
+}
+
+.not-chosen {
+  filter: grayscale(1)
+}
 .choice-btn {
   color: #FFF;
   background-color: #FF4C65;
   height: 275px;
   width: 100%;
+  padding: 5rem;
   border-radius: 2rem;
   border-width: 0.75rem;
   font-size: 3rem;
   line-height: 1.5;
   white-space: normal !important;
 	word-wrap: break-word !important;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .choice-btn:hover {
-  color: #FFF;
-  background-color: #C82333;
-  border-color: #BD2130;
+  background-color: #E6445B;
+}
+
+hr.style1{
+  margin-top: 50px;
+	border-top: 8px dotted #343a40;
+}
+
+
+.comment-box {
+  margin-top: 10px;
+
 }
 
 #logout {
-  margin-top: 10px
+  margin-top: 10px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.3rem;
 }
