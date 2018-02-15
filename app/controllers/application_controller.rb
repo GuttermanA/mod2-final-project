@@ -51,8 +51,8 @@ class ApplicationController < ActionController::Base
         filter = true
       end
     elsif self.class == QuestionsController
-      question = Question.find_by(id: params[:id])
-      if question.nsfw_flag
+      category= Category.find_by(id: params[:id])
+      if category.name.include?("nsfw")
         filter = true
       end
     end

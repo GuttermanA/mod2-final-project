@@ -1,31 +1,44 @@
-<h5>Category: <%= @question.category.name %></h5>
 
-<h1>Would you rather...</h1>
+<div class="container">
+  <p>Category: <%= @question.category.name %></p>
 
+  <div class="jumbotron">
+    <h1>Would you rather...</h1>
+  </div>
 
-<% @question.choices.each do |choice| %>
-  <%= form_tag "/questions/#{@question.id}/answers" do %>
-    <%= hidden_field_tag :'answer[choice_id]', choice.id%>
-    <%= hidden_field_tag :'answer[user_id]', current_user.id%>
-    <%= hidden_field_tag :'answer[question_id]', @question.id%>
-    <% if choice.img_url %>
-      <%= choice.name %>
-      <%= image_submit_tag choice.img_url %>
-    <% else %>
-      <%= submit_tag choice.content %>
+  <div class="row">
+  <div class="col-lg-1 col-md-1 col-sm-1"></div>
+  <% @question.choices.each do |choice| %>
+    <div class="col-lg-5 col-md-5 col-sm-5 text-center" >
+      <%= form_tag "/questions/#{@question.id}/answers" do %>
+        <%= hidden_field_tag :'answer[choice_id]', choice.id%>
+        <%= hidden_field_tag :'answer[user_id]', current_user.id%>
+        <%= hidden_field_tag :'answer[question_id]', @question.id%>
+        <% if choice.img_url %>
+            <%= image_submit_tag choice.img_url, class: "img-thumbnail"%>
+            <h4><%= choice.name%></h4>
+        <% else %>
+            <%= submit_tag choice.content, class: "choice-btn"%>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="col-lg-1 col-md-1 col-sm-1"></div>
+  </div>
+
+  <div class="row">
+  <div class="col-md-12 col-sm-12" >
+  <h4>Comments</h4>
+  <% if @comments.empty? %>
+    <p>No comments yet!</p>
+  <% else %>
+    <ul>
+    <% @comments.each do |comment| %>
+      <li><%= comment.user.username %> - <%= comment.content %></li>
     <% end %>
+    </ul>
   <% end %>
-<% end %>
+  </div>
+  </div>
 
-
-
-<h2>Comments</h2>
-<% if @comments.empty? %>
-  <p>No comments yet!</p>
-<% else %>
-  <ul>
-  <% @comments.each do |comment| %>
-    <li><%= comment.user.username %> - <%= comment.content %></li>
-  <% end %>
-  </ul>
-<% end %>
+</div>

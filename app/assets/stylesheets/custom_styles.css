@@ -1,0 +1,48 @@
+body {
+  padding-top: 70px;
+  background-color: #FFC33C;
+}
+
+
+.navbar {
+  background-color: #59C4C5
+}
+
+.navbar a {
+  color: white;
+}
+
+.jumbotron {
+  background-color: #FFC33C;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.img-thumbnail {
+  height: 400px;
+  padding: 0.75rem;
+  background-color: #59C4C5;
+}
+
+.choice-btn {
+  color: #FFF;
+  background-color: #FF4C65;
+  height: 275px;
+  width: 100%;
+  border-radius: 2rem;
+  border-width: 0.75rem;
+  font-size: 3rem;
+  line-height: 1.5;
+  white-space: normal !important;
+	word-wrap: break-word !important;
+}
+
+.choice-btn:hover {
+  color: #FFF;
+  background-color: #C82333;
+  border-color: #BD2130;
+}
+
+#logout {
+  margin-top: 10px
+}
