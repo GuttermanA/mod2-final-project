@@ -18,8 +18,7 @@ class AnswersController < ApplicationController
   def create
     @answer = Answer.new(answer_params)
     if @answer.save
-      @question = @answer.question
-      redirect_to question_answer_path(@question, @answer)
+      redirect_to @answer
     else
       flash[:reanswer_message] = "You've already answered this question! Try a new one:"
       redirect_to question_path(rand_category_id)

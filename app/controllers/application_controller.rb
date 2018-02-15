@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :current_user, :remaining_questions, :select_unanswered_question, :select_unanswered_question_by_category, :clean_categories, :nsfw_categories, :rand_category_id
+  helper_method :current_user, :remaining_questions, :select_unanswered_question, :select_unanswered_question_by_category, :clean_categories, :nsfw_categories, :rand_category_id, :rand_slug
 
   def current_user
     @current_user ||= User.find_by(id: session[:user_id])
@@ -29,9 +29,10 @@ class ApplicationController < ActionController::Base
   end
 
   # call on a category
-  def select_unanswered_question_by_category(category_id)
+  def select_unanswered_question_by_category(slug)
     questions = remaining_questions.select do |q|
-      q.category.id == category_id.to_i
+      # q.category.id == category_id.to_i
+      q.category.slug == slug
     end
     questions.sample
   end
@@ -53,6 +54,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def rand_slug
+    Category.find(rand_category_id).slug
+  end
+
   # call on an answer or question
   def nsfw_filter
     if self.class == AnswersController
@@ -61,7 +66,7 @@ class ApplicationController < ActionController::Base
         filter = true
       end
     elsif self.class == QuestionsController
-      category= Category.find_by(id: params[:id])
+      category= Category.find_by_slug(params[:id])
       if category.name.include?("nsfw")
         filter = true
       end
