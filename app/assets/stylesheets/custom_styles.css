@@ -23,8 +23,6 @@ h5 {
 }
 
 .navbar {
-  padding-top: 10px;
-  padding-bottom: 5px;
   background-color: #59C4C5;
   font-family: 'Open Sans', sans-serif;
   font-size: 1.5rem;
@@ -63,7 +61,7 @@ h5 {
   background-color: #FF4C65;
   height: 275px;
   width: 100%;
-  padding: 5rem;
+  padding: auto;
   border-radius: 2rem;
   border-width: 0.75rem;
   font-size: 3rem;
@@ -85,6 +83,12 @@ hr.style1{
 
 .comment-box {
   margin-top: 10px;
+  margin-left: 15px;
+  margin-bottom: 20px;
+  width: 97%;
+  background-color: #FBE2B4;
+  padding: 15px;
+  border-radius: 1rem;
 
 }
 
