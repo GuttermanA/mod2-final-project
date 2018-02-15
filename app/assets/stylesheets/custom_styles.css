@@ -48,6 +48,7 @@ h5 {
   background-color: #FF4C65;
   border: 0;
   border-radius: 2rem;
+  clip: rect(400px, 300px);
 }
 
 .img-thumbnail:hover {
@@ -62,6 +63,26 @@ h5 {
   border: 0;
   border-radius: 2rem;
   max-width: 100%;
+}
+
+
+.homepage-btn {
+  color: #FFF;
+  background-color: #FF4C65;
+  height: 450px;
+  width: 55%;
+  border-radius: 2rem;
+  border-width: 0.75rem;
+  font-size: 18rem;
+  font-weight: bold;
+  line-height: 1.5;
+  white-space: normal !important;
+	word-wrap: break-word !important;
+  margin-top: 20px;
+}
+
+.homepage-btn:hover {
+  background-color: #E6445B;
 }
 
 .choice-btn {
@@ -182,11 +203,11 @@ hr.small{
 }
 
 #user_answers_box {
-  border: solid black;
+  border: solid gray;
 }
 
 #user_comments_box {
-  border: solid black;
+  border: solid gray;
 }
 
 #user_answers_box, #user_comments_box {

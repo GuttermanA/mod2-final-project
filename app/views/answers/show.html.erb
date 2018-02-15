@@ -15,7 +15,7 @@
       <% if choice == @answer.choice %>
         <h4><%= @stats[:choice] %></h4>
       <% else %>
-        <h4><%= @stats[:not_choice]%></h4>
+        <h4><%= @stats[:not_choice] %></h4>
       <% end %>
 
     <% else %>
@@ -49,10 +49,6 @@
   <% end %>
 
   <div class="col-lg-12 col-md-12 col-sm-12 comment-box" >
-
-
-
-
       <div class="form-group">
         <%= form_tag comments_path method: :post do %>
           <%= hidden_field_tag :'comment[user_id]', current_user.id %>
@@ -61,7 +57,6 @@
           <%= submit_tag "Submit", method: :post, class: "btn btn-danger btn-sm" %>
         <% end %>
       </div>
-
 
   <hr class="small">
 

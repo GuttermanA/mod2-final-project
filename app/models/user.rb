@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :questions, through: :answers
 
   validates :username, :email, uniqueness: true, presence: true
-  validates :zip_code, length: {is: 5}
+  # validates :zip_code, length: {is: 5}
   has_secure_password
 
 

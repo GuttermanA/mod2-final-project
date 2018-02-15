@@ -18,8 +18,8 @@ class Answer < ApplicationRecord
     choice = (stats[:choice][:count].to_f/stats[:all].to_f).round(2) * 100
     not_choice = (100 - choice)
     percent = {}
-    percent[:choice] = choice.to_s + '%'
-    percent[:not_choice] = not_choice.to_s + '%'
+    percent[:choice] = choice.to_i.to_s + '%'
+    percent[:not_choice] = not_choice.to_i.to_s + '%'
     percent
   end
 
