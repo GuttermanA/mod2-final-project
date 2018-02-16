@@ -1,11 +1,23 @@
-<h1>Sign Up</h1>
+
+<div class="form-group col-md-12">
+  <h1>Sign Up</h1>
+</div>
 
 <%= form_for @user do |f| %>
-  <%= f.text_field :username, placeholder: "Username" %>
-  <%= f.password_field :password, placeholder: "Password" %>
-  <%= f.password_field :password_confirmation, placeholder: "Confirm Password" %>
-  <%= f.text_field :email, placeholder: "Email Address" %>
-  <%= f.number_field :zip_code, placeholder: "Zipcode" %>
-  <%= f.date_field :dob %>
-  <%= f.submit %>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <%= f.label 'Username' %>
+      <%= f.text_field :username, class: "form-control" %>
+      <%= f.label 'Password' %>
+      <%= f.password_field :password, class: "form-control" %>
+      <%= f.label 'Confirm Pasword' %>
+      <%= f.password_field :password_confirmation, class: "form-control" %>
+      <%= f.label 'Email' %>
+      <%= f.text_field :email, class: "form-control" %>
+      <%= f.label 'Birthday' %>
+      <%= f.date_field :dob, class: "form-control" %>
+    </div>
+  <div class="form-group col-md-12">
+    <%= f.submit "Submit", class:"btn btn-danger" %>
+  </div>
 <% end %>
