@@ -1,7 +1,11 @@
-<h1>Categories</h1>
-
+<div class="jumbotron">
+  <h1>Categories</h1>
+</div>
+<br>
+<p>See a question by category of choice:</p>
+<br>
 <ul>
   <% @categories.each do |category| %>
-    <li><%= link_to category.name, question_path(select_unanswered_question_by_category(slug)) %></li>
+    <h3><%= link_to category.name, question_path(select_unanswered_question_by_category(category.slug)) %></h3>
   <% end %>
 </ul>

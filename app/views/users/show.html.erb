@@ -4,7 +4,9 @@
 
 
 <h3>Email: <%= current_user.email %></h3>
-<h3>Birthday: <%= current_user.dob.strftime('%D') %></h3><br>
+<% if current_user.dob %>
+  <h3>Birthday: <%= current_user.dob.strftime('%D') %></h3><br>
+<% end %>
 <div class="col-lg-12 col-md-12 col-sm-12">
   <%= button_to "Edit Profile", edit_user_path, method: :get, class: "btn btn-danger btn-sm"%><br>
 </div>
