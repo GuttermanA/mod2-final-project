@@ -22,6 +22,10 @@ h5 {
   font-family: 'Noticia Text', serif;
 }
 
+.form {
+  width: 50%;
+}
+
 .navbar {
   background-color: #59C4C5;
   font-family: 'Open Sans', sans-serif;
