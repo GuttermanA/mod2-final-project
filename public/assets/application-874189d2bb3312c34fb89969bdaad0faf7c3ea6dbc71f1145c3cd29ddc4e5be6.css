@@ -1,0 +1,273 @@
+body {
+  background-color: #FFC33C;
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+  font-family: 'Rock Salt', cursive;
+}
+
+
+h3 {
+  font-family: 'Noticia Text', serif;
+  font-weight: bold;
+  margin-left: 15px;
+}
+
+h4, .panel-heading {
+   font-family: 'Rock Salt', cursive;
+ }
+
+h5 {
+  font-family: 'Noticia Text', serif;
+}
+
+p {
+  font-size: 2.5rem;
+}
+
+.form {
+  width: 50%;
+}
+
+.navbar {
+  background-color: #59C4C5;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.5rem;
+}
+
+.navbar a {
+  color: white;
+}
+
+#hamburger {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.jumbotron, .panel-default {
+  background-color: #FFC33C;
+  padding: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.img-thumbnail {
+  height: 400px;
+  padding: 0.75rem;
+  background-color: #FF4C65;
+  border: 0;
+  border-radius: 2rem;
+  clip: rect(400px, 300px);
+}
+
+.img-thumbnail:hover {
+  filter: brightness(1.5);
+  filter: contrast(0.75);
+}
+
+.answer-img-thumbnail {
+  height: 400px;
+  padding: 0.75rem;
+  background-color: #FF4C65;
+  border: 0;
+  border-radius: 2rem;
+  max-width: 100%;
+}
+
+
+.homepage-btn {
+  color: #FFF;
+  background-color: #FF4C65;
+  height: 450px;
+  width: 55%;
+  border-radius: 2rem;
+  border-width: 0.75rem;
+  font-size: 18rem;
+  font-weight: bold;
+  line-height: 1.5;
+  white-space: normal !important;
+	word-wrap: break-word !important;
+  margin-top: 20px;
+}
+
+.homepage-btn:hover {
+  background-color: #E6445B;
+}
+
+.choice-btn {
+  color: #FFF;
+  background-color: #FF4C65;
+  height: 275px;
+  width: 100%;
+  border-radius: 2rem;
+  border-width: 0.75rem;
+  font-size: 3rem;
+  line-height: 1.5;
+  white-space: normal !important;
+	word-wrap: break-word !important;
+}
+
+.choice-btn:hover {
+  background-color: #E6445B;
+}
+
+.answer-box {
+  background-color: #FF4C65;
+  height: 275px;
+  width: 100%;
+  border-radius: 2rem;
+  border: 0.75rem solid rgb(186, 186, 186);
+}
+
+.answer-box p {
+  color: #FFF;
+  font-size: 3rem;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  margin: auto;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+
+.more-btn {
+  color: #FFF;
+  background-color: #59C4C5;
+  height: 5.5rem;
+}
+
+.more-btn:hover {
+  background-color: #50B0B1;
+}
+
+hr.large{
+  margin-top: 50px;
+	border-top: 8px dotted #343a40;
+}
+
+hr.small{
+  margin-top: 25px;
+	border-top: 0.2rem solid rgb(186, 186, 186);
+}
+
+.comment-box {
+  margin-top: 10px;
+  margin-left: 15px;
+  margin-bottom: 20px;
+  width: 97%;
+  background-color: #FBE2B4;
+  padding: 15px;
+  border-radius: 1rem;
+
+}
+
+.warning {
+  color: red;
+  font-weight: bold;
+  padding: 2rem 0rem;
+}
+
+.form-control {
+  margin-bottom: 10px;
+}
+
+#logout {
+  margin-top: 10px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.3rem;
+}
+
+.user_info {
+  font-family: 'Open Sans', sans-serif;
+  margin-left: 0;
+}
+
+.user_info_box {
+  border-bottom: solid rgb(186, 186, 186);
+}
+
+.picked {
+  color: #FF4C65;
+}
+
+.panel-default {
+  border-style: none;
+}
+
+.panel-default ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.panel-default ul li {
+  border-top: .1em solid rgb(186, 186, 186);
+  border-bottom: .1em solid rgb(186, 186, 186);
+}
+
+.panel-default ul li a {
+  color: #FF4C65;
+}
+
+#user_answers_box {
+  border: solid gray;
+}
+
+#user_comments_box {
+  border: solid gray;
+}
+
+#user_answers_box, #user_comments_box {
+  overflow: scroll;
+  max-height: 500px;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+
+::-webkit-scrollbar-corner {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+/* line 5, /Users/fei/Development/week6_mod2/mod2-project/app/assets/stylesheets/static.scss */
+ul {
+  list-style: none;
+  /* Remove list bullets */
+  padding: 0;
+  margin: 0;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+
+
+@import "bootstrap";
+@import "bootstrap-sprockets";
+/* Some Style from the Bootstrap Default Theme */
+body {
+ padding-top: 70px;
+ padding-bottom: 30px;
+}
