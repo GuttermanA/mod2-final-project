@@ -4,6 +4,10 @@ Would You Rather? is a game of preferences, where the user chooses between two t
 
 Upon answering a question, the app displays the statistics of what all users have selected when presented with the same two choices. Users also have the option of posting comments regarding a particular question.
 
+{% highlight ruby %}
+cd would-you-rather
+{% endhighlight %}
+
 ## Installing
 1. Clone repository from GitHub
 2. Open terminal
@@ -42,22 +46,18 @@ rake db:seed
 1. Fork repository [here](https://github.com/feihafferkamp/mod2-project)
 2. Create new branch for your feature
 {% highlight ruby %}
-git checkout -b insert-your-feature-name
+git checkout -b my-new-feature
 {% endhighlight %}
 3. Add and commit your changes
 {% highlight ruby %}
-git add .
-git commit -m 'add [insert your feature here]'
+git commit -am 'Add some feature'
 {% endhighlight %}
 4. Push to your branch
 {% highlight ruby %}
-git push
+git push origin my-new-feature
 {% endhighlight %}
 5. Create new pull request
-6. Push to the branch
-{% highlight ruby %}
-git push origin insert-your-feature-name
-{% endhighlight %}
+
 
 ## Authors
 * Fei Hafferkamp - [Github Profile](https://github.com/feihafferkamp)
