@@ -1,6 +1,6 @@
 # Would You Rather?
 
-Would You Rather? is a game of preferences, where the user chooses between two things of the same category. These categories range from famous cats to TV characters, and even some not-so-PG categories, like Cards Against Humanity cards, which are available only to those over the age of 18).
+Would You Rather? is a game of preferences, where the user chooses between two things of the same category. These categories range from famous cats to TV characters, and even some not-so-PG categories, like Cards Against Humanity cards, which are available only to those over the age of 18.
 
 Upon answering a question, the app displays the statistics of what all users have selected when presented with the same two choices. Users also have the option of posting comments regarding a particular question.
 
@@ -27,7 +27,7 @@ rails s
 7. In browser, navigate to the url localhost:3000
 
 ## Adding More Questions
-1. Add choices of the same category in a CVS file
+1. Add choices of the same category in a CSV file
 2. Place in db/seeds directory
 3. Seed data
 ```

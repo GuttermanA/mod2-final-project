@@ -22,6 +22,10 @@ h5 {
   font-family: 'Noticia Text', serif;
 }
 
+p {
+  font-size: 2.5rem;
+}
+
 .form {
   width: 50%;
 }
