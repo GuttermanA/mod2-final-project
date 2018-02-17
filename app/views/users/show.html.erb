@@ -3,6 +3,8 @@
 </div>
 
 
+<div class="col-lg-1 col-md-1 col-sm-1"></div>
+<div class="col-lg-11 col-md-11 col-sm-11">
 <h3>Email: <%= current_user.email %></h3>
 <% if current_user.dob %>
   <h3>Birthday: <%= current_user.dob.strftime('%D') %></h3><br>
@@ -41,4 +43,5 @@
       <% end %>
     </div>
   </div>
+</div>
 </div>

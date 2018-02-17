@@ -2,10 +2,11 @@
   <h1>Categories</h1>
 </div>
 <br>
-<p>See a question by category of choice:</p>
-<br>
-<ul>
+<div class="col-lg-1 col-md-1 col-sm-1"></div>
+<div class="col-lg-11 col-md-11 col-sm-11">
+  <p>See a question by category of choice:</p>
+  <br>
   <% @categories.each do |category| %>
     <h3><%= link_to category.name, question_path(select_unanswered_question_by_category(category.slug)) %></h3>
   <% end %>
-</ul>
+</div>
