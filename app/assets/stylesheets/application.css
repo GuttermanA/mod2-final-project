@@ -14,7 +14,7 @@
  *= require_self
  */
 
-@import "bootstrap-sprockets";
+@import "bootstrap";
 /* Some Style from the Bootstrap Default Theme */
 body {
  padding-top: 70px;

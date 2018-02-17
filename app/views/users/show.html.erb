@@ -3,12 +3,8 @@
 </div>
 
 
-<div class="col-lg-1 col-md-1 col-sm-1"></div>
-<div class="col-lg-11 col-md-11 col-sm-11">
 <h3>Email: <%= current_user.email %></h3>
-<% if current_user.dob %>
-  <h3>Birthday: <%= current_user.dob.strftime('%D') %></h3><br>
-<% end %>
+<h3>Birthday: <%= current_user.dob.strftime('%D') %></h3><br>
 <div class="col-lg-12 col-md-12 col-sm-12">
   <%= button_to "Edit Profile", edit_user_path, method: :get, class: "btn btn-danger btn-sm"%><br>
 </div>
@@ -43,5 +39,4 @@
       <% end %>
     </div>
   </div>
-</div>
 </div>
