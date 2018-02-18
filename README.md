@@ -36,6 +36,7 @@ rake db:seed
 
 ## Built With
 * [Ruby on Rails](http://rubyonrails.org/) - web framework
+* [Bootstrap](https://getbootstrap.com/) - frontend library
 
 ## Contributing
 1. Fork repository [here](https://github.com/feihafferkamp/mod2-project)
